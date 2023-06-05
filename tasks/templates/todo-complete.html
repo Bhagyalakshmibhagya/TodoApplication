@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>List of Todo's Completed</h1>
+    {%for m in messages%}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{m}}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          {%endfor%}
+          <div class="container">
+              <table class="table table-striped">
+                  <caption class="caption-top">List of all Todos</caption>
+                  <tr>
+                      <th>SI no</th>
+                      <th>TaskName</th>
+                      <th>User</th>
+                      <th>Status</th>
+                      <th>Date</th>
+                  </tr>
+                  {%for t in todos%}
+                  <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{t.task_name}}</td>
+                      <td>{{t.user}}</td>
+                 <td>{{t.status}}</td>
+                 <td>{{t.date}}</td>
+                 <td> <a href="{%url 'todo-delete' t.id%}" class="btn btn-outline-danger">Delete</a>
+                    <a href="{%url 'todo-detail' t.id%}" class="btn btn-outline-info">Detail</a></td>
+                </tr>
+                {%endfor%}
+           </table>
+</body>
+</html>
